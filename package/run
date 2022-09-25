@@ -1,0 +1,7 @@
+#!/bin/sh
+IMAGENAME="drumbbang-server"
+SERVERPORT=18080
+DOCKERPORT=8080
+
+docker stop IMAGENAME
+docker run -p $SERVERPORT:$DOCKERPORT $IMAGENAME
