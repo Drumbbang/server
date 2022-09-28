@@ -1,0 +1,17 @@
+#!/bin/sh
+VERSION="0.0.1"
+PROJECTNAME="drumbbang-$VERSION-server.jar"
+IMAGENAME="drumbbang-server"
+
+cd ..
+
+chmod 777 gradlew
+
+./gradlew clean build
+./gradlew build
+
+cd package || return;
+
+docker build . -t $IMAGENAME --build-arg PROJECTNAME=$PROJECTNAME
+
+rm -rf $PROJECTNAME
